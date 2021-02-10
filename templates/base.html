@@ -1,0 +1,280 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block meta %}
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% endblock %}
+    {% block extra_meta %}
+    {% endblock %}
+
+    {% block corecss %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <link rel="stylesheet" rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+        <link class="shortcut-icon" rel="shortcut icon" type="image/x-icon" href="{% static '#' %}" />
+    {% endblock %}
+
+    {% block extra_css %}
+    {% endblock %}
+
+    {% block corejs %}
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/e9c73d7092.js" crossorigin="anonymous"></script>
+    {% endblock %}
+
+    {% block extra_js %}
+    {% endblock %}
+
+    <title>{% block page_title %}{% endblock %}</title>
+    </head>
+    <body>
+    <div class="container ">
+      <div class="page-wrapper chiller-theme toggled margin-top-6rem">
+        <a id="show-sidebar" class="btn btn-sm btn-dark" href="##">
+          <i class="fas fa-bars"></i>
+        </a>
+        <nav id="sidebar" class="sidebar-wrapper">
+          <div class="sidebar-content">
+            <div class="sidebar-brand">
+              <a href="#">Menu</a>
+            <div id="close-sidebar">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+      
+        <div class="sidebar-search">
+          <div class="d-flex justify-content-center">
+            {% if user.userimage.image %}
+              <img src="{{ MEDIA_URL}}{{user.userimage.image}}" alt="Avatar" class="avatar">
+            {% else %}
+             <img src="{% static 'images/user.png'%}" alt="Avatar" class="avatar">
+            {% endif %}
+          </div>
+            <h5 class="text-center username">{{user.username | title}}</h5>
+        </div>
+
+        <div class="sidebar-menu">
+          <ul>
+            <li class="header-menu">
+              <span>General</span>
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="##">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Dashboard</a>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="##">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <span>Sessions</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Sessions</a>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">Cover</a>
+                  </li>
+                  <li>
+                    <a href="#">Lost</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="##">
+                <i class="fas fa-user-graduate"></i>
+                <span>Students</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Students</a>
+                  </li>
+                  <li>
+                    <a href="#">Legal Guardian</a>
+                  </li>
+                </ul>
+                </div>
+                <li class="sidebar-dropdown">
+              <a href="##">
+                <i class="fas fa-code-branch"></i>
+                <span>Branches</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Classrooms</a>
+                  </li>
+                  <li>
+                    <a href="#">Teachers</a>
+                  </li>
+                  <li>
+                    <a href="#">Legal Guardian</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="##">
+                <i class="fas fa-book"></i>
+                <span>Courses</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Agreements</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="##">
+                <i class="fas fa-credit-card"></i>
+                <span>Payments</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Search</a>
+                  </li>
+                  <li>
+                    <a href="#">Due</a>
+                  </li>
+                  <li>
+                    <a href="#">Recent</a>
+                  </li>
+                  <li>
+                    <a href="#">Over Due</a>
+                  </li>
+                  <li>
+                    <a href="#">Quick Receipts</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="##">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <span>Teachers</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Teachers</a>
+                  </li>
+                  <li>
+                    <a href="#">Teachers Notes</a>
+                  </li>
+                  <li>
+                    <a href="#">Teachers Notes Category</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="##">
+                <i class="fas fa-envelope"></i>
+                <span>Messaging</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Messages</a>
+                  </li>
+                  <li>
+                    <a href="#">Select Students</a>
+                  </li>
+                  <li>
+                    <a href="#">Select Legal Guardian</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="header-menu">
+              <span>Settings</span>
+            </li>
+            <li class="sidebar-dropdown">
+              <a href="##">
+                <i class="fas fa-cogs"></i>
+                <span>Settings</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a href="#">Courses</a>
+                  </li>
+                  <li>
+                    <a href="#">Group Packages</a>
+                  </li>
+                  <li>
+                    <a href="#">School Terms</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'users' %}">Users</a>
+                  </li>
+                  <li>
+                    <a href="#">Quick Session Done</a>
+                  </li>
+                  <li>
+                    <a href="#">Sessions Conflicts</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'account_logout' %}">Log Out</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </div>
+        </div>
+      </nav>
+      {% block content %}
+  {% endblock %}
+    </div>
+  </div>
+  <script>
+  jQuery(function ($) {
+    $(".sidebar-dropdown > a").click(function() {
+  $(".sidebar-submenu").slideUp(200);
+  if (
+    $(this)
+      .parent()
+      .hasClass("active")
+  ) {
+    $(".sidebar-dropdown").removeClass("active");
+    $(this)
+      .parent()
+      .removeClass("active");
+  } else {
+    $(".sidebar-dropdown").removeClass("active");
+    $(this)
+      .next(".sidebar-submenu")
+      .slideDown(200);
+    $(this)
+      .parent()
+      .addClass("active");
+  }
+});
+$("#close-sidebar").click(function() {
+  $(".page-wrapper").removeClass("toggled");
+});
+$("#show-sidebar").click(function() {
+  $(".page-wrapper").addClass("toggled");
+});
+});
+</script>
+</body>

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% load humanize %}
+<div class="container mt-3 mb-4">
+<div class="col-lg-12 mt-4 mt-lg-0">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
+          <table class="table manage-candidates-top mb-0">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th class="text-center">Joined</th>
+                <th class="action text-right">Last Active</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+              <tr class="candidates-list">
+                <td class="title">
+                {% if user.userimage.image %}
+                  <div class="thumb">
+                    <img class="img-fluid" src="{{ MEDIA_URL}}{{user.userimage.image}}" alt="">
+                  </div>
+                {% else %}
+                <div class="thumb">
+                    <img class="img-fluid" src="{% static 'images/user.png'%}" alt="">
+                  </div>
+                {% endif %}
+                  <div class="candidate-list-details">
+                    <div class="candidate-list-info">
+                      <div class="candidate-list-title">
+                        <h5 class="mb-0 font-weight-bold">{{user.username | title}}</h5>
+                      </div>
+                      <div class="candidate-list-option">
+                        <ul class="list-unstyled">
+                          <li><i class="fas fa-envelope-open-text pr-1"></i>{{user.email}}</li>
+                          {% if user.userimage.phone_number %}
+                            <li><i class="fas fa-phone pr-1"></i></i>{{user.userimage.phone_number}}</li>
+                          {% else %}
+                            <li><i class="fas fa-phone pr-1"></i></i>Not Available</li>
+                          {%endif%}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td class="candidate-list-favourite-time text-center">
+                  <a class="candidate-list-favourite order-2 text-danger" href="#"><i class="fas fa-users"></i></a>
+                  <span class="candidate-list-time order-1">{{user.date_joined | naturalday | title}}</span>
+                </td>
+                <td class="candidate-list-favourite-time text-center">
+                  <a class="candidate-list-favourite order-2 text-danger" href="#"><i class="fas fa-signal"></i></a>
+                  <span class="candidate-list-time order-1">{{user.last_login | naturalday | title}}</span>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

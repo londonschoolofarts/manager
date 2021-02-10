@@ -1,0 +1,38 @@
+
+
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load bootstrap_tags %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block inner_content %}
+{% if user.is_superuser %}
+<hr>
+<h2 class="logo-font mb-4 margin-top-6rem music-lessons">{% trans "Sign Up" %}</h2>
+<hr>
+
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  {{ form| as_bootstrap }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">Sign in</a>.{% endblocktrans %}</p>
+  <button type="submit" class="btn btn-success">{% trans "Sign Up" %}</button>
+  <a  class="btn btn-secondary " href="{% url 'account_login' %}">Back to Login</a>
+</form>
+  {% else %}
+  <div >
+      <div class="jumbotron margin-top-10rem">
+      <h1 class="display-4 music-lessons">Not Perrmited !</h1>
+      <p class="lead music-lessons">Only the Site admin is allowed to register new people or to create new Accounts</p>
+      <hr class="my-4">
+      <p class="music-lessons">If you need an account created please contact the admin and he/she will create an account for you.</p>
+      <p class="lead">
+      <a class="btn btn-secondary " href="{% url 'home' %}" role="button">Home</a>
+      </p>
+      </div>
+  </div>
+{% endif %}
+{% endblock %}
